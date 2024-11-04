@@ -5,7 +5,7 @@ include 'includes/functions.php';
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $name = sanitize($_POST['name']);
     $email = sanitize($_POST['email']);
-    $password = hashPassword($_POST['password']);
+    $password = sanitize($_POST['password']); // No hashing
 
     // Prepare the statement
     $stmt = $conn->prepare("INSERT INTO users (name, email, password) VALUES (?, ?, ?)");
